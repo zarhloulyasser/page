@@ -1,0 +1,198 @@
+/* ------------------------------------------------------------------
+   Tweak the layout here. These five values control all the spacing.
+   ------------------------------------------------------------------ */
+:root {
+  --left-margin:    60px;   /* viewport edge  ->  nav          */
+  --nav-width:     150px;   /* width of the sidebar            */
+  --gap:            90px;   /* nav            ->  text         */
+  --content-width: 620px;   /* width of the text column        */
+  --right-margin:  120px;   /* text           ->  viewport edge (minimum) */
+
+  --link:    #0864c7;
+  --text:    #333;
+  --muted:   #999;
+  --rule:    #eee;
+}
+
+html { color-scheme: light; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  display: flex;
+  align-items: flex-start;
+  padding-left: var(--left-margin);
+  padding-right: var(--right-margin);
+}
+
+/* ---------------- sidebar ---------------- */
+
+#menu {
+  flex: none;
+  width: var(--nav-width);
+  margin-top: 30px;
+  position: sticky;
+  top: 30px;
+}
+
+#menu .title {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 14px;
+  color: #000;
+}
+
+#menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#menu li {
+  margin-bottom: 3px;
+  line-height: 20px;
+}
+
+#menu a,
+#menu a:visited {
+  color: var(--link);
+  text-decoration: none;
+}
+
+#menu a:hover { text-decoration: underline; }
+
+#menu a.active {
+  color: #000;
+}
+
+/* ---------------- content ---------------- */
+
+#content {
+  flex: 1 1 auto;
+  width: var(--content-width);
+  max-width: var(--content-width);
+  margin-left: var(--gap);
+  margin-top: 15px;
+  padding-bottom: 6em;
+}
+
+#content h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+#content h2 {
+  font-size: 15px;
+  margin: 2.4em 0 0;
+}
+
+#content h3 {
+  font-size: 14px;
+  margin: 1.8em 0 0;
+}
+
+#content .subtitle {
+  color: var(--muted);
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+
+#content p,
+#content ul,
+#content ol,
+#content dl {
+  color: var(--text);
+  line-height: 22px;
+}
+
+#content li { margin-bottom: 0.6em; }
+
+#content a,
+#content a:visited { color: var(--link); }
+
+#content .note,
+#content .byline {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+#content blockquote {
+  margin: 1.4em 0 1.4em 0;
+  padding-left: 16px;
+  border-left: 2px solid var(--rule);
+  color: var(--text);
+  line-height: 22px;
+}
+
+#content blockquote cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+#content hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.5em 0;
+}
+
+/* profile photo — same scale patrickcollison.com uses (130px tall) */
+#content .photo {
+  float: right;
+  height: 130px;
+  width: 130px;
+  object-fit: cover;
+  margin: 4px 0 18px 28px;
+}
+
+#content .footer {
+  margin-top: 3.5em;
+  padding-top: 1em;
+  border-top: 1px solid var(--rule);
+  font-size: 12px;
+  color: #777;
+}
+
+#content .footer a { color: #777; }
+
+/* ---------------- small screens ---------------- */
+
+@media (max-width: 980px) {
+  :root {
+    --left-margin: 24px;
+    --right-margin: 24px;
+  }
+  .page { display: block; }
+  #menu {
+    position: static;
+    width: auto;
+    margin-top: 24px;
+  }
+  #menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+  }
+  #menu li { margin-bottom: 0; }
+  #content {
+    width: auto;
+    max-width: none;
+    margin-left: 0;
+    margin-top: 24px;
+  }
+  #content .photo {
+    height: 110px;
+    width: 110px;
+    margin-left: 18px;
+  }
+}
